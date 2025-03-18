@@ -6,19 +6,19 @@ startCommand:
     # JSON Schema defining the configuration options for the MCP.
     type: object
     required:
-      - clientId
-      - clientSecret
-      - gdriveCredsDir
+      - CLIENT_ID
+      - CLIENT_SECRET
+      - REFRESH_TOKEN
     properties:
-      clientId:
+      CLIENT_ID:
         type: string
         description: OAuth Client ID for Google API
-      clientSecret:
+      CLIENT_SECRET:
         type: string
         description: OAuth Client Secret for Google API
-      gdriveCredsDir:
+      REFRESH_TOKEN:
         type: string
-        description: Directory path for Google Drive credentials (gcp-oauth.keys.json)
+        description: Refresh Token for Google API.
   commandFunction:
     # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
     |-
@@ -26,12 +26,12 @@ startCommand:
       command: 'node',
       args: ['build/index.js'],
       env: {
-        CLIENT_ID: config.clientId,
-        CLIENT_SECRET: config.clientSecret,
-        GDRIVE_CREDS_DIR: config.gdriveCredsDir
+        CLIENT_ID: config.CLIENT_ID,
+        CLIENT_SECRET: config.CLIENT_SECRET,
+        REFRESH_TOKEN: config.REFRESH_TOKEN
       }
     })
   exampleConfig:
-    clientId: your-google-oauth-client-id
-    clientSecret: your-google-oauth-client-secret
-    gdriveCredsDir: /path/to/your/creds
+    CLIENT_ID: your-google-oauth-client-id
+    CLIENT_SECRET: your-google-oauth-client-secret
+    REFRESH_TOKEN: your-refresh-token
