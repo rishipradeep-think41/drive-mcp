@@ -1,4 +1,5 @@
 # Google Drive server
+[![smithery badge](https://smithery.ai/badge/@rishipradeep-think41/drive-mcp)](https://smithery.ai/server/@rishipradeep-think41/drive-mcp)
 
 This MCP server integrates with Google Drive to allow listing, reading, and searching files, as well as the ability to read and write to Google Sheets.
 
@@ -63,6 +64,14 @@ The server provides access to Google Drive files:
 8. Note your OAuth Client ID and Client Secret. They must be provided as environment variables along with your configuration directory.
 
 Make sure to build the server with either `npm run build` or `npm run watch`.
+
+### Installing via Smithery
+
+To install drive-mcp for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@rishipradeep-think41/drive-mcp):
+
+```bash
+npx -y @smithery/cli install @rishipradeep-think41/drive-mcp --client claude
+```
 
 ### Authentication
 

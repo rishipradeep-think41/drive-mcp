@@ -1,0 +1,37 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    type: object
+    required:
+      - clientId
+      - clientSecret
+      - gdriveCredsDir
+    properties:
+      clientId:
+        type: string
+        description: OAuth Client ID for Google API
+      clientSecret:
+        type: string
+        description: OAuth Client Secret for Google API
+      gdriveCredsDir:
+        type: string
+        description: Directory path for Google Drive credentials (gcp-oauth.keys.json)
+  commandFunction:
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
+    |-
+    (config) => ({
+      command: 'node',
+      args: ['build/index.js'],
+      env: {
+        CLIENT_ID: config.clientId,
+        CLIENT_SECRET: config.clientSecret,
+        GDRIVE_CREDS_DIR: config.gdriveCredsDir
+      }
+    })
+  exampleConfig:
+    clientId: your-google-oauth-client-id
+    clientSecret: your-google-oauth-client-secret
+    gdriveCredsDir: /path/to/your/creds
