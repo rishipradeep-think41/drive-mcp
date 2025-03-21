@@ -9,7 +9,7 @@ export const schema = {
     properties: {
       query: {
         type: "string",
-        description: "Search query",
+        description: "Name of the file to be searched for",
       },
       pageToken: {
         type: "string",
